@@ -65,13 +65,8 @@
 
     <section class="jumbotron text-center">
         <div class="container">
-            <h1 class="jumbotron-heading">VideoGame Gallery</h1>
-            <p class="lead text-muted">gallery of all the videogames availables</p>
-            <p>
-                <a href="#" class="btn btn-primary my-2">Go to the top console page</a>
-                <a href="#" class="btn btn-secondary my-2">Go to top handheld console
-                    page</a>
-            </p>
+            <h1 class="jumbotron-heading">Cast Gallery</h1>
+            <p class="lead text-muted">gallery of all the characters of the Breaking Bad series</p>
         </div>
     </section>
 
@@ -83,7 +78,7 @@
                 <#list casts as cast >
                     <div class="col-md-4">
                         <div class="card mb-4 shadow-sm">
-                            <img src="${cast.img}" width="100%" height="400">
+                            <img src="${cast.img}" width="100%" height="400px" alt="cast">
                             <div class="card-body">
                                 <h4 class="card-title">${cast.name}</h4>
                                 <p class="card-text">${cast.portrayed}</p>
