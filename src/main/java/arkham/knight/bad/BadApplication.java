@@ -2,9 +2,11 @@ package arkham.knight.bad;
 
 import arkham.knight.bad.models.Cast;
 import arkham.knight.bad.models.Death;
+import arkham.knight.bad.models.Episode;
 import arkham.knight.bad.models.Quote;
 import arkham.knight.bad.services.CastService;
 import arkham.knight.bad.services.DeathService;
+import arkham.knight.bad.services.EpisodeService;
 import arkham.knight.bad.services.QuoteService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -29,23 +31,19 @@ public class BadApplication {
 
 
     @Bean
-    public CommandLineRunner run(RestTemplate restTemplate, CastService castService, QuoteService quoteService, DeathService deathService) {
+    public CommandLineRunner run(RestTemplate restTemplate, CastService castService, QuoteService quoteService, DeathService deathService, EpisodeService episodeService) {
         return args -> {
 
-            String  getAllEpisodesUrl = "https://breakingbadapi.com/api/episodes";
+            ResponseEntity<Episode[]> responseEntityEpisode = restTemplate.getForEntity("https://breakingbadapi.com/api/episodes", Episode[].class);
 
-            String getAllQuotesUrl = "https://breakingbadapi.com/api/quotes";
+            ResponseEntity<Cast[]> responseEntity = restTemplate.getForEntity("https://breakingbadapi.com/api/characters", Cast[].class);
 
-            String getAllDeathsUrl = "https://breakingbadapi.com/api/deaths";
+            ResponseEntity<Quote[]> responseEntityQuotes = restTemplate.getForEntity("https://breakingbadapi.com/api/quotes", Quote[].class);
 
-            String getAllCharactersUrl = "https://breakingbadapi.com/api/characters";
+            ResponseEntity<Death[]> responseEntityDeaths = restTemplate.getForEntity("https://breakingbadapi.com/api/deaths", Death[].class);
 
-            ResponseEntity<Cast[]> responseEntity = restTemplate.getForEntity(getAllCharactersUrl, Cast[].class);
 
-            ResponseEntity<Quote[]> responseEntityQuotes = restTemplate.getForEntity(getAllQuotesUrl, Quote[].class);
-
-            ResponseEntity<Death[]> responseEntityDeaths = restTemplate.getForEntity(getAllDeathsUrl, Death[].class);
-
+            episodeService.saveAllEpisodes(responseEntityEpisode);
 
             castService.saveAllCast(responseEntity);
 
