@@ -38,7 +38,7 @@
     <div class="navbar navbar-dark bg-dark shadow-sm">
         <div class="container d-flex justify-content-between">
 
-            <a href="#" class="navbar-brand d-flex align-items-center">
+            <a href="/cast/" class="navbar-brand d-flex align-items-center">
                 <strong>Home</strong>
             </a>
 
@@ -65,8 +65,8 @@
 
     <section class="jumbotron text-center">
         <div class="container">
-            <h1 class="jumbotron-heading">Cast Gallery</h1>
-            <p class="lead text-muted">gallery of all the characters of the Breaking Bad series</p>
+            <h1 class="jumbotron-heading">People killed by ${killerName}</h1>
+            <p class="lead text-muted">Information of all the death characters in the Breaking Bad series</p>
         </div>
     </section>
 
@@ -75,23 +75,29 @@
 
             <div class="row">
 
-                <#list casts as cast >
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img src="${cast.img}" width="100%" height="400px" alt="cast">
-                            <div class="card-body">
-                                <h4 class="card-title">${cast.name}</h4>
-                                <p class="card-text">${cast.portrayed}</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <a class="btn btn-outline-primary" href="/cast/murder/${cast.name}"
-                                           role="button">More</a>
+                <#list deaths as death>
+                    <#if death??> <!--Si existe entonces muestra los datos -->
+                        <div class="col-md-4">
+                            <div class="card mb-4 shadow-sm">
+                                <#list deathCharacters as character >
+                                    <#if character??>
+                                        <#if character.name == death.death>
+                                            <img src="${character.img}" width="100%" height="400px" alt="cast">
+                                        </#if>
+                                    </#if>
+                                </#list>
+                                <div class="card-body">
+                                    <h4 class="card-title">${death.death}</h4>
+                                    <p class="card-text">${death.cause}</p>
+                                    <p class="card-text">Season: ${death.season} Episode: ${death.episode}</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+
+                                        <small class="text-muted">${death.last_words}</small>
                                     </div>
-                                    <small class="text-muted">${cast.status}</small>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </#if>
                 </#list>
 
 

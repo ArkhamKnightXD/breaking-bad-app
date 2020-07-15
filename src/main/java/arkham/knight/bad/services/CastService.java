@@ -1,10 +1,13 @@
 package arkham.knight.bad.services;
 
 import arkham.knight.bad.models.Cast;
+import arkham.knight.bad.models.Death;
 import arkham.knight.bad.repositories.CastRepository;
+import arkham.knight.bad.repositories.DeathRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -15,10 +18,33 @@ public class CastService {
     @Autowired
     private CastRepository castRepository;
 
+    @Autowired
+    private DeathRepository deathRepository;
 
     public List<Cast> getAllCast(){
 
         return castRepository.findAll();
+    }
+
+
+    public Cast findCastByNameLike(String castName){
+
+        return castRepository.findByNameLike("%"+ castName + "%");
+    }
+
+
+    public List<Cast> getAllDeathsCharactersByKillerName(String responsibleOfTheDeath){
+
+        List<Cast> castOfDeaths = new ArrayList<>();
+
+        for (Death death : deathRepository.findAllByResponsibleLike("%" +responsibleOfTheDeath +"%")) {
+
+            Cast deathCast = castRepository.findByNameLike(death.getDeath());
+
+            castOfDeaths.add(deathCast);
+        }
+
+        return castOfDeaths;
     }
 
 

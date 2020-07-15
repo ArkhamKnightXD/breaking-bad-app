@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CastRepository extends JpaRepository<Cast, Long> {
+
+    Cast findByNameLike(String characterName);
 }

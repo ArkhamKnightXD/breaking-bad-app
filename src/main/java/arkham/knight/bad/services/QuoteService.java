@@ -22,6 +22,12 @@ public class QuoteService {
     }
 
 
+    public List<Quote> findAllQuotesByAuthor(String authorName){
+
+        return quoteRepository.findAllByAuthor(authorName);
+    }
+
+
     public void saveAllQuotes(ResponseEntity<Quote[]> responseEntity){
 
         List<Quote> quoteList = Arrays.asList(Objects.requireNonNull(responseEntity.getBody()));

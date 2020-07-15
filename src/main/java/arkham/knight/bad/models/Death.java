@@ -2,13 +2,14 @@ package arkham.knight.bad.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Death {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String death;
@@ -68,9 +69,7 @@ public class Death {
         return season;
     }
 
-    public void setSeason(int season) {
-        this.season = season;
-    }
+    public void setSeason(int season) { this.season = season; }
 
     public int getEpisode() {
         return episode;
@@ -80,9 +79,7 @@ public class Death {
         this.episode = episode;
     }
 
-    public int getNumber_of_deaths() {
-        return number_of_deaths;
-    }
+    public int getNumber_of_deaths() { return number_of_deaths; }
 
     public void setNumber_of_deaths(int number_of_deaths) {
         this.number_of_deaths = number_of_deaths;

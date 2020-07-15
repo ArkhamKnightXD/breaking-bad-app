@@ -22,6 +22,12 @@ public class DeathService {
     }
 
 
+    public List<Death> getAllDeathsByResponsible(String responsibleOfTheDeath){
+
+        return deathRepository.findAllByResponsibleLike("%" +responsibleOfTheDeath +"%");
+    }
+
+
     public void saveAllDeaths(ResponseEntity<Death[]> responseEntity){
 
         List<Death> deathList = Arrays.asList(Objects.requireNonNull(responseEntity.getBody()));

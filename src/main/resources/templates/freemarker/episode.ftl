@@ -37,7 +37,7 @@
     <div class="navbar navbar-dark bg-dark shadow-sm">
         <div class="container d-flex justify-content-between">
 
-            <a href="/" class="navbar-brand d-flex align-items-center">
+            <a href="/cast/" class="navbar-brand d-flex align-items-center">
                 <strong>Home</strong>
             </a>
 
@@ -48,7 +48,7 @@
                     <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
                     <circle cx="12" cy="13" r="4"/>
                 </svg>
-                <strong>Cast of Breaking Bad</strong>
+                <strong>Episodes of Breaking Bad</strong>
             </a>
 
 
@@ -64,8 +64,8 @@
 
     <section class="jumbotron text-center">
         <div class="container">
-            <h1 class="jumbotron-heading">Cast Gallery</h1>
-            <p class="lead text-muted">gallery of all the characters of the Breaking Bad series</p>
+            <h1 class="jumbotron-heading">Episode Gallery</h1>
+            <p class="lead text-muted">gallery of all the Episodes of the Breaking Bad series</p>
         </div>
     </section>
 
@@ -74,21 +74,24 @@
 
             <div class="row">
 
-                <#list casts as cast >
+                <#list episodes as episode>
                     <div class="col-md-4">
                         <div class="card mb-4 shadow-sm">
-                            <img src="${cast.img}" width="100%" height="400px" alt="cast">
+                            <img src="" width="100%" height="400px">
                             <div class="card-body">
-                                <h4 class="card-title">${cast.name}</h4>
-                                <p class="card-text">${cast.portrayed}</p>
+                                <h4 class="card-title">${episode.title}</h4>
+                                <p class="card-text">Season: ${episode.season} Episode: ${episode.episode}</p>
+                                <p class="card-text">Date of air: ${episode.air_date}</p>
+                                <p class="card-text">Character Appearance:</p>
+                                <#list episode.characters as character>
+                                     ${character},
+                                </#list>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
                                         <a class="btn btn-outline-primary" href="#"
-                                           role="button">View</a>
-                                        <a class="btn btn-outline-success"
-                                           href="#" role="button">Edit</a>
+                                           role="button">More</a>
                                     </div>
-                                    <small class="text-muted">${cast.status}</small>
+                                    <small class="text-muted">${episode.series}</small>
                                 </div>
                             </div>
                         </div>
