@@ -8,8 +8,6 @@
 
     <link href="../../bootstrap-4.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="../../bootstrap-4.3.1/style/show-info.css" rel="stylesheet">
-
     <link href="../../bootstrap-4.3.1/style/style.css" rel="stylesheet">
 
 </head>
@@ -37,8 +35,11 @@
     <div class="navbar navbar-dark bg-dark shadow-sm">
         <div class="container d-flex justify-content-between">
 
-            <a href="/cast/" class="navbar-brand d-flex align-items-center">
-                <strong>Home</strong>
+            <a href="/cast/" class="navbar-brand d-flex">
+                <strong>Cast</strong>
+            </a>
+            <a href="#" class="navbar-brand d-flex">
+                <strong>Episodes</strong>
             </a>
 
             <a href="#" class="navbar-brand d-flex align-items-center">
@@ -66,6 +67,9 @@
         <div class="container">
             <h1 class="jumbotron-heading">Episode Gallery</h1>
             <p class="lead text-muted">gallery of all the Episodes of the Breaking Bad series</p>
+            <form action="/episode/">
+                <input class="form-control form-control-dark w-100" type="text" name="title" placeholder="Search..." aria-label="Search">
+            </form>
         </div>
     </section>
 
@@ -87,10 +91,7 @@
                                      ${character},
                                 </#list>
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <a class="btn btn-outline-primary" href="#"
-                                           role="button">More</a>
-                                    </div>
+
                                     <small class="text-muted">${episode.series}</small>
                                 </div>
                             </div>

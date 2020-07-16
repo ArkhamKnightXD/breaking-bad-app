@@ -8,8 +8,6 @@
 
     <link href="../../bootstrap-4.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="../../bootstrap-4.3.1/style/show-info.css" rel="stylesheet">
-
     <link href="../../bootstrap-4.3.1/style/style.css" rel="stylesheet">
 
 
@@ -38,10 +36,12 @@
     <div class="navbar navbar-dark bg-dark shadow-sm">
         <div class="container d-flex justify-content-between">
 
-            <a href="#" class="navbar-brand d-flex align-items-center">
-                <strong>Home</strong>
+            <a href="#" class="navbar-brand d-flex">
+                <strong>Cast</strong>
             </a>
-
+            <a href="/episode/" class="navbar-brand d-flex">
+                <strong>Episodes</strong>
+            </a>
             <a href="#" class="navbar-brand d-flex align-items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
                      stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="mr-2"
@@ -67,6 +67,9 @@
         <div class="container">
             <h1 class="jumbotron-heading">Cast Gallery</h1>
             <p class="lead text-muted">gallery of all the characters of the Breaking Bad series</p>
+            <form action="/cast/">
+                <input class="form-control form-control-dark w-100" type="text" name="characterName" placeholder="Search..." aria-label="Search">
+            </form>
         </div>
     </section>
 
@@ -84,8 +87,10 @@
                                 <p class="card-text">${cast.portrayed}</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <a class="btn btn-outline-primary" href="/cast/murder/${cast.name}"
-                                           role="button">More</a>
+                                        <a class="btn btn-outline-danger" href="/cast/murder/${cast.name}"
+                                           role="button">Victims</a>
+                                        <a class="btn btn-outline-primary" href="/cast/quote/${cast.name}"
+                                           role="button">Quotes</a>
                                     </div>
                                     <small class="text-muted">${cast.status}</small>
                                 </div>

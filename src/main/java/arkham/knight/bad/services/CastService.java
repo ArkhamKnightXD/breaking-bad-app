@@ -21,15 +21,22 @@ public class CastService {
     @Autowired
     private DeathRepository deathRepository;
 
+
     public List<Cast> getAllCast(){
 
         return castRepository.findAll();
     }
 
 
-    public Cast findCastByNameLike(String castName){
+    public Cast findCastByName(String castName){
 
-        return castRepository.findByNameLike("%"+ castName + "%");
+        return castRepository.findByName(castName);
+    }
+
+
+    public List<Cast> getAllCastByNameLike(String castName){
+
+        return castRepository.findByNameLike("%" + castName + "%");
     }
 
 
@@ -39,7 +46,7 @@ public class CastService {
 
         for (Death death : deathRepository.findAllByResponsibleLike("%" +responsibleOfTheDeath +"%")) {
 
-            Cast deathCast = castRepository.findByNameLike(death.getDeath());
+            Cast deathCast = castRepository.findByName(death.getDeath());
 
             castOfDeaths.add(deathCast);
         }

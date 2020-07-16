@@ -22,6 +22,12 @@ public class EpisodeService {
     }
 
 
+    public List<Episode> getAllEpisodesByTitleLike(String title){
+
+        return episodeRepository.findAllByTitleLike("%" + title + "%");
+    }
+
+
     public void saveAllEpisodes(ResponseEntity<Episode[]> responseEntity){
 
         List<Episode> episodeList = Arrays.asList(Objects.requireNonNull(responseEntity.getBody()));

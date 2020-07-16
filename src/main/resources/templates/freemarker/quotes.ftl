@@ -47,7 +47,7 @@
                     <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
                     <circle cx="12" cy="13" r="4"/>
                 </svg>
-                <strong>Cast of Breaking Bad</strong>
+                <strong>Quotes of Breaking Bad</strong>
             </a>
 
 
@@ -63,8 +63,8 @@
 
     <section class="jumbotron text-center">
         <div class="container">
-            <h1 class="jumbotron-heading">People killed by ${killerName}</h1>
-            <p class="lead text-muted">Information of all the death characters in the Breaking Bad series</p>
+            <h1 class="jumbotron-heading">Quotes made by ${characterName}</h1>
+            <p class="lead text-muted">Information of all the quotes made by characters in the Breaking Bad series</p>
         </div>
     </section>
 
@@ -73,24 +73,17 @@
 
             <div class="row">
 
-                <#list deaths as death>
-                    <#if death??> <!--Si existe entonces muestra los datos -->
+                <#list quotes as quote>
+                    <#if quote??>
                         <div class="col-md-4">
                             <div class="card mb-4 shadow-sm">
-                                <#list deathCharacters as character >
-                                    <#if character??>
-                                        <#if character.name == death.death>
-                                            <img src="${character.img}" width="100%" height="400px" alt="cast">
-                                        </#if>
-                                    </#if>
-                                </#list>
+                                <img src="${character.img}" width="100%" height="400px" alt="cast">
+
                                 <div class="card-body">
-                                    <h4 class="card-title">${death.death}</h4>
-                                    <p class="card-text">${death.cause}</p>
-                                    <p class="card-text">Season: ${death.season} Episode: ${death.episode}</p>
+                                    <h4 class="card-title">${quote.quote}</h4>
                                     <div class="d-flex justify-content-between align-items-center">
 
-                                        <small class="text-muted">${death.last_words}</small>
+                                        <small class="text-muted">${quote.series}</small>
                                     </div>
                                 </div>
                             </div>
