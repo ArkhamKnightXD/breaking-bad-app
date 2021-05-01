@@ -17,6 +17,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-freemarker'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     runtimeOnly 'mysql:mysql-connector-java'
+    runtimeOnly 'com.h2database:h2'
+
 
     //en intellj devtools no funciona correctamente asi que para que haga el live reload es necesario compilar
     // el codigo con ctrl +f9 que toma 1 sec aproximadamente y por lo tanto es mas rapido que reinicia el proyecto como anteriormente hacia

@@ -34,7 +34,7 @@ public class BadApplication {
     public CommandLineRunner run(RestTemplate restTemplate, CastService castService, QuoteService quoteService, DeathService deathService, EpisodeService episodeService) {
         return args -> {
 
-          /*  ResponseEntity<Episode[]> responseEntityEpisode = restTemplate.getForEntity("https://breakingbadapi.com/api/episodes", Episode[].class);
+            ResponseEntity<Episode[]> responseEntityEpisode = restTemplate.getForEntity("https://breakingbadapi.com/api/episodes", Episode[].class);
 
             ResponseEntity<Cast[]> responseEntity = restTemplate.getForEntity("https://breakingbadapi.com/api/characters", Cast[].class);
 
@@ -49,7 +49,7 @@ public class BadApplication {
 
             quoteService.saveAllQuotes(responseEntityQuotes);
 
-            deathService.saveAllDeaths(responseEntityDeaths); */
+            deathService.saveAllDeaths(responseEntityDeaths);
         };
     }
 
